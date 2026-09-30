@@ -1,0 +1,446 @@
+@import "tailwindcss";
+
+/* Tokens from the Figma "Colors" + "Typography" collections */
+@theme {
+  --font-sans: "Google Sans Flex", system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --color-white: #ffffff;
+  --color-amber-50: #fff9ee;
+  --color-amber-100: #fff0d9;
+  --color-amber-200: #ffd794;
+  --color-amber-300: #ffbd39;
+  --color-amber-500: #f4a903;
+  --color-amber-700: #d7700a;
+  --color-amber-950: #45200a;
+  --color-gray-200: #e5e5e5;
+  --color-gray-300: #d4d4d4;
+  --color-gray-400: #9c9c9c;
+  --color-gray-500: #686868;
+  --color-gray-700: #494949;
+  --color-gray-800: #3a3a3a;
+  --color-gray-900: #141414;
+  --color-gray-950: #0a0a0a;
+}
+
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+html,
+body {
+  margin: 0;
+  background: #141414;
+  overflow-x: hidden;
+}
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Fixed 1920 artboard scaled to the viewport, so layout matches Figma exactly */
+.stage {
+  width: 1920px;
+  margin: 0 auto;
+  zoom: var(--zoom, 1);
+  background: #fff;
+}
+
+/* ───────── Hero ───────── */
+.hero-bg { background: #141414; }
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: video-in 1600ms var(--ease-out) both;
+}
+/* Darkens the bright sky under the nav and the city under the search, keeps the middle readable */
+.hero-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(20, 20, 20, 0.78) 0%, rgba(20, 20, 20, 0.35) 22%, rgba(20, 20, 20, 0.45) 50%, rgba(20, 20, 20, 0.82) 85%, #141414 100%),
+    radial-gradient(60% 45% at 50% 58%, rgba(20, 20, 20, 0.35), rgba(20, 20, 20, 0) 70%);
+}
+@keyframes video-in { from { opacity: 0; transform: scale(1.06); } to { opacity: 1; transform: scale(1); } }
+
+/* Entrance: headline, paragraph, search, chips */
+[data-node-id="170:1976"],
+[data-node-id="170:1977"],
+[data-node-id="170:1978"],
+[data-node-id="170:1980"],
+[data-node-id="170:1989"],
+[data-node-id="170:1962"] {
+  animation: rise 900ms var(--ease-out) both;
+}
+[data-node-id="170:1962"] { animation-name: fade; animation-delay: 0ms; }
+[data-node-id="170:1976"] { animation-delay: 150ms; }
+[data-node-id="170:1977"] { animation-delay: 260ms; }
+[data-node-id="170:1978"] { animation-delay: 380ms; }
+[data-node-id="170:1980"] { animation-delay: 500ms; }
+[data-node-id="170:1989"] { animation-delay: 620ms; }
+
+/* ── Radar scanner (as on propertyscanner.com): two faint amber rings centred on the hero copy and a
+   soft amber cone sweeping round them, one turn every 7s. Sits between the video and the copy.
+   Outer ring 790px spanning y 150–940 (clear of the nav above, uncut below); inner ring 420px. */
+[data-node-id="170:1960"],
+[data-node-id="170:1973"] { position: relative; z-index: 2; }
+/* Figma "Scanning" component (corner brackets + line scan) is replaced by the radar */
+[data-node-id="179:2051"] { display: none; }
+.hero-radar {
+  position: absolute;
+  z-index: 1;
+  left: 960px;
+  top: 545px;
+  width: 790px;
+  height: 790px;
+  margin: -395px 0 0 -395px;
+  border-radius: 50%;
+  border: 1px solid rgba(244, 169, 3, 0.14);
+  pointer-events: none;
+}
+.hero-radar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(rgba(244, 169, 3, 0.34) 0deg, rgba(244, 169, 3, 0.1) 55deg, rgba(0, 0, 0, 0) 80deg, rgba(0, 0, 0, 0) 360deg);
+  -webkit-mask: radial-gradient(circle, transparent 18%, #000 55%, transparent 72%);
+  mask: radial-gradient(circle, transparent 18%, #000 55%, transparent 72%);
+  animation: radar-sweep 7s linear infinite;
+}
+.hero-radar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  border: 1px solid rgba(244, 169, 3, 0.1);
+}
+@keyframes radar-sweep { to { transform: rotate(360deg); } }
+
+/* ── Sticky nav: the 1600 nav row is pinned to the window. At the top it matches Figma (transparent,
+   centred in the 180px band); once you scroll it condenses into a frosted dark bar. */
+[data-node-id="170:1961"] {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  width: auto !important;
+  height: 180px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 20, 20, 0);
+  border-bottom: 1px solid rgba(255, 255, 255, 0);
+  transition: height 450ms var(--ease-out), background-color 450ms var(--ease-out), border-color 450ms, backdrop-filter 450ms;
+}
+[data-node-id="170:1962"] { width: 1600px !important; }
+[data-node-id="170:1963"] { transform-origin: left center; transition: transform 450ms var(--ease-out); cursor: pointer; }
+[data-node-id="167:1705"] { cursor: pointer; }
+.scrolled [data-node-id="170:1961"] {
+  height: 88px;
+  background: rgba(20, 20, 20, 0.9);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+}
+.scrolled [data-node-id="170:1963"] { transform: scale(0.78); }
+
+/* Voice button: two breathing rings */
+[data-node-id="I179:2746;179:2520"],
+[data-node-id="I179:2746;179:2519"] {
+  transform-origin: center;
+  animation: ring 2.4s ease-out infinite;
+}
+[data-node-id="I179:2746;179:2519"] { animation-delay: 0.5s; }
+[data-node-id="179:2746"] { cursor: pointer; }
+[data-node-id="I179:2746;179:2513"] { transition: transform 200ms var(--ease-out); }
+[data-node-id="179:2746"]:hover [data-node-id="I179:2746;179:2513"] { transform: scale(1.08); }
+[data-node-id="179:2746"]:active [data-node-id="I179:2746;179:2513"] { transform: scale(0.96); }
+
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 22px;
+  margin-left: 2px;
+  vertical-align: -4px;
+  background: #f4a903;
+  animation: blink 1s steps(1) infinite;
+}
+
+/* Try-chips */
+[data-node-id="170:1989"] > div {
+  cursor: pointer;
+  transition: background-color 200ms var(--ease-out), transform 200ms var(--ease-out), border-color 200ms;
+}
+[data-node-id="170:1989"] > div:hover {
+  background: rgba(255, 255, 255, 0.24);
+  border-color: rgba(244, 169, 3, 0.7);
+  transform: translateY(-2px);
+}
+
+/* Nav links */
+[data-node-id="170:1965"] p,
+[data-node-id="170:1970"] {
+  cursor: pointer;
+  transition: color 200ms;
+}
+[data-node-id="170:1965"] p:hover,
+[data-node-id="170:1970"]:hover { color: #ffbd39; }
+
+/* ───────── Buttons (every Figma "Button · …" layer) ───────── */
+[data-name^="Button"] {
+  cursor: pointer;
+  transition: transform 200ms var(--ease-out), box-shadow 250ms var(--ease-out), filter 200ms;
+}
+[data-name^="Button"]:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+  box-shadow: 0 10px 24px rgba(244, 169, 3, 0.35);
+}
+[data-name^="Button"]:active { transform: scale(0.97); }
+
+/* ───────── Lifestyle tiles (Figma: photo 108%, label up 6px, shadow, 300ms ease-out) ───────── */
+[data-node-id="204:3390"] > div {
+  cursor: pointer;
+  transition: box-shadow 300ms var(--ease-out), transform 300ms var(--ease-out);
+}
+[data-node-id="204:3390"] > div > [data-name="Photo"] {
+  transition: transform 600ms var(--ease-out);
+}
+[data-node-id="204:3390"] > div > div:nth-child(3) {
+  transition: transform 300ms var(--ease-out);
+}
+[data-node-id="204:3390"] > div:hover {
+  box-shadow: 0 20px 40px rgba(10, 10, 10, 0.22) !important;
+  transform: translateY(-4px);
+}
+[data-node-id="204:3390"] > div:hover > [data-name="Photo"] { transform: scale(1.08); }
+[data-node-id="204:3390"] > div:hover > div:nth-child(3) { transform: translateY(-6px); }
+
+/* Hover: amber stroke that travels round the tile's rounded edge */
+@property --beam-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+[data-node-id="204:3390"] > div::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  padding: 3px;
+  background: conic-gradient(
+    from var(--beam-angle),
+    rgba(244, 169, 3, 0) 0deg,
+    rgba(244, 169, 3, 0) 200deg,
+    rgba(244, 169, 3, 0.6) 280deg,
+    #ffbd39 340deg,
+    #fff0d9 352deg,
+    rgba(244, 169, 3, 0) 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0;
+  transition: opacity 300ms var(--ease-out);
+  pointer-events: none;
+  animation: beam-spin 2.2s linear infinite paused;
+}
+[data-node-id="204:3390"] > div:hover::after {
+  opacity: 1;
+  animation-play-state: running;
+}
+@keyframes beam-spin { to { --beam-angle: 360deg; } }
+
+/* "See how matching works" arrow nudge */
+[data-node-id="167:1397"] { cursor: pointer; }
+[data-node-id="167:1399"] { transition: transform 250ms var(--ease-out); }
+[data-node-id="167:1397"]:hover [data-node-id="167:1399"] { transform: translateX(4px); }
+
+/* ───────── Journey steps ───────── */
+[data-node-id="167:1443"],
+[data-node-id="167:1454"],
+[data-node-id="167:1473"] {
+  transition: transform 300ms var(--ease-out), box-shadow 300ms var(--ease-out), border-color 300ms;
+}
+[data-node-id="167:1443"]:hover,
+[data-node-id="167:1454"]:hover,
+[data-node-id="167:1473"]:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 0 1px rgba(255, 215, 148, 0.9), 0 18px 40px rgba(244, 169, 3, 0.22);
+  border-color: #ffd794 !important;
+}
+
+/* Step 04 hover glow (Figma set "Journey step card / Highlight", 350ms) */
+[data-node-id="200:1928"] {
+  transition: transform 350ms var(--ease-out), filter 350ms var(--ease-out), border-color 350ms;
+  background-image: radial-gradient(120% 80% at 50% 0%, rgba(255, 189, 57, 0) 0%, rgba(255, 189, 57, 0) 60%);
+}
+[data-node-id="200:1928"]:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 215, 148, 1) !important;
+  filter: drop-shadow(0 0 24px rgba(244, 169, 3, 0.6)) drop-shadow(0 14px 22px rgba(244, 169, 3, 0.35)) !important;
+  background-image: radial-gradient(120% 80% at 50% 0%, rgba(255, 189, 57, 0.9) 0%, rgba(255, 189, 57, 0) 60%);
+}
+[data-node-id="179:3049"] { transition: box-shadow 350ms var(--ease-out); }
+[data-node-id="200:1928"]:hover [data-node-id="179:3049"] { box-shadow: 0 0 18px rgba(255, 189, 57, 0.9); }
+[data-node-id="179:3056"] { transition: transform 350ms var(--ease-out), box-shadow 350ms; }
+[data-node-id="200:1928"]:hover [data-node-id="179:3056"] {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(69, 32, 10, 0.18);
+}
+
+/* ───────── Progress bar / Live — Figma set 190:1785 ─────────
+   Rest (fill 55%, shine at −90) → Glow (100% + amber halo + top sheen, shine centred)
+   → Dim (55%, shine past the right edge) → instant snap back to Rest. 0.8s per step. */
+[data-node-id="237:2074"],
+[data-node-id="236:2071"] {
+  animation: pb-fill 1.6s ease-in-out infinite;
+}
+[data-node-id="237:2074"]::after,
+[data-node-id="236:2071"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 189, 57, 0.9) 0%, rgba(255, 189, 57, 0) 50%, rgba(244, 169, 3, 0) 100%);
+  opacity: 0;
+  animation: pb-sheen 1.6s ease-in-out infinite;
+}
+[data-node-id="237:2075"],
+[data-node-id="236:2072"] { animation: pb-shine 1.6s ease-in-out infinite; }
+
+@keyframes pb-fill {
+  0%, 100% { opacity: 0.55; box-shadow: 0 0 4px 0 rgba(244, 169, 3, 0.25); }
+  50% { opacity: 1; box-shadow: 0 0 16px 2px rgba(244, 169, 3, 0.45), 0 0 16px 1px rgba(244, 169, 3, 0.85); }
+}
+@keyframes pb-sheen { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
+@keyframes pb-shine {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(var(--shine-mid, 111.5px)); }
+  100% { transform: translateX(var(--shine-end, 223px)); }
+}
+
+/* ───────── Journey cards 01–03: amber blur that follows the cursor ───────── */
+[data-node-id="167:1443"],
+[data-node-id="167:1454"],
+[data-node-id="167:1473"] {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+[data-node-id="167:1443"]::before,
+[data-node-id="167:1454"]::before,
+[data-node-id="167:1473"]::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 320px;
+  height: 320px;
+  left: calc(var(--mx, 50%) - 160px);
+  top: calc(var(--my, 30%) - 160px);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 189, 57, 0.55) 0%, rgba(244, 169, 3, 0.18) 45%, rgba(244, 169, 3, 0) 70%);
+  filter: blur(24px);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 350ms var(--ease-out), transform 450ms var(--ease-out);
+  pointer-events: none;
+}
+[data-node-id="167:1443"]:hover::before,
+[data-node-id="167:1454"]:hover::before,
+[data-node-id="167:1473"]:hover::before { opacity: 1; transform: scale(1); }
+
+/* ───────── Film ───────── */
+[data-node-id="167:1532"] { cursor: pointer; }
+[data-node-id="167:1532"] > img { transition: transform 800ms var(--ease-out); }
+[data-node-id="167:1532"]:hover > img { transform: scale(1.04); }
+[data-node-id="167:1534"] {
+  overflow: visible !important;
+  animation: pulse-white 2.2s ease-out infinite;
+  transition: transform 250ms var(--ease-out);
+}
+[data-node-id="167:1532"]:hover [data-node-id="167:1534"] { transform: scale(1.08); }
+/* the Copy column and play row clip in Figma; let the pulse ring breathe outside them */
+[data-node-id="167:1521"],
+[data-node-id="167:1526"] { overflow: visible !important; }
+[data-node-id="167:1527"] {
+  overflow: visible !important;
+  cursor: pointer;
+  animation: pulse-amber 2.2s ease-out infinite;
+  transition: transform 250ms var(--ease-out);
+}
+[data-node-id="167:1526"]:hover [data-node-id="167:1527"] { transform: scale(1.08); }
+[data-node-id="167:1526"] { cursor: pointer; }
+
+/* ───────── Comparison: border beam travels the card edge (Figma loop Beam 1→4, linear) ───────── */
+[data-node-id="202:1971"] { animation: beam 3.6s linear infinite; will-change: transform; }
+[data-node-id="167:1563"] > div:not(:first-child),
+[data-node-id="167:1544"] > div:not(:first-child) { transition: background-color 200ms; }
+
+/* ───────── Founding ───────── */
+[data-node-id="167:1651"],
+[data-node-id="167:1653"] {
+  cursor: pointer;
+  transition: background-color 300ms var(--ease-out), box-shadow 300ms;
+}
+[data-node-id="167:1651"] p,
+[data-node-id="167:1653"] p { transition: color 300ms; }
+[data-node-id="167:1684"],
+[data-node-id="167:1690"],
+[data-node-id="167:1696"] {
+  transition: transform 300ms var(--ease-out), background-color 300ms, border-color 300ms;
+}
+[data-node-id="167:1684"]:hover,
+[data-node-id="167:1690"]:hover,
+[data-node-id="167:1696"]:hover {
+  transform: translateY(-4px);
+  border-color: rgba(244, 169, 3, 0.45) !important;
+}
+[data-node-id="167:1649"] input,
+[data-node-id="167:1649"] textarea { font: inherit; }
+
+/* Footer socials + links */
+[data-node-id="167:1724"] > * { cursor: pointer; transition: transform 200ms var(--ease-out), opacity 200ms; }
+[data-node-id="167:1724"] > *:hover { transform: translateY(-2px); opacity: 0.7; }
+[data-node-id="167:1706"] p { cursor: pointer; transition: color 200ms; }
+[data-node-id="167:1706"] p:hover { color: #d7700a; }
+
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ring {
+  0% { transform: scale(0.9); opacity: 0.9; }
+  70% { transform: scale(1.35); opacity: 0; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes pulse-white {
+  0% { box-shadow: 0 16px 40px rgba(10, 10, 10, 0.3), 0 0 0 0 rgba(255, 255, 255, 0.55); }
+  100% { box-shadow: 0 16px 40px rgba(10, 10, 10, 0.3), 0 0 0 28px rgba(255, 255, 255, 0); }
+}
+@keyframes pulse-amber {
+  0% { box-shadow: 0 0 0 0 rgba(244, 169, 3, 0.6); }
+  100% { box-shadow: 0 0 0 18px rgba(244, 169, 3, 0); }
+}
+@keyframes beam {
+  0% { transform: translate(0, 0); }
+  25.6% { transform: translate(526px, 0); }
+  50% { transform: translate(526px, 503px); }
+  75.6% { transform: translate(0, 503px); }
+  100% { transform: translate(0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
