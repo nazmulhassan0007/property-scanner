@@ -67,10 +67,10 @@ export default function Hero() {
       <div className="content-stretch flex flex-col gap-[24px] h-[496px] items-center relative shrink-0" data-node-id="170:1973">
         <div className="[word-break:break-word] content-stretch flex flex-col gap-[16px] items-center relative shrink-0 text-center" data-node-id="170:1974">
           <div className="content-stretch flex flex-col font-semibold gap-[14px] items-center justify-center leading-none relative shrink-0 text-[72px] w-[722px] whitespace-nowrap" data-node-id="170:1975">
-            <p className="font-serif font-semibold italic relative shrink-0 text-[color:var(--color-amber-500,#f4a903)]" data-node-id="170:1976">
+            <p className="font-sans font-semibold relative shrink-0 text-[color:var(--color-amber-500,#f4a903)]" data-node-id="170:1976">
               Say it once.
             </p>
-            <p className="font-sans font-semibold not-italic relative shrink-0 text-white" data-node-id="170:1977" style={{ fontVariationSettings: '"GRAD" 0, "ROND" 0, "wdth" 100' }}>
+            <p className="font-sans font-semibold not-relative shrink-0 text-white" data-node-id="170:1977" style={{ fontVariationSettings: '"GRAD" 0, "ROND" 0, "wdth" 100' }}>
               We find your home.
             </p>
           </div>

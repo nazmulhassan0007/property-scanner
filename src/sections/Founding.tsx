@@ -27,7 +27,7 @@ export default function Founding() {
       <div className="content-stretch flex items-center justify-between overflow-clip relative shrink-0 w-full" data-node-id="167:1612" data-name="Row">
         <div className="content-stretch flex flex-col gap-[28px] items-start overflow-clip relative shrink-0 w-[700px]" data-node-id="167:1613" data-name="Pitch">
           <div className="[word-break:break-word] content-stretch flex flex-col gap-[18px] items-start relative shrink-0" data-node-id="167:1617">
-            <p className="font-serif font-semibold font-semibold italic leading-[var(--text-5xl--line-height,48px)] relative shrink-0 text-[color:var(--color-amber-500,#f4a903)] text-[length:var(--text-5xl,48px)] w-[700px]" data-node-id="167:1618">
+            <p className="font-sans font-semibold font-semibold leading-[var(--text-5xl--line-height,48px)] relative shrink-0 text-[color:var(--color-amber-500,#f4a903)] text-[length:var(--text-5xl,48px)] w-[700px]" data-node-id="167:1618">
               Be among the first
             </p>
             <p className="font-sans  font-medium leading-[var(--text-6xl--line-height,60px)] relative shrink-0 text-[color:var(--color-white,white)] text-[length:var(--text-6xl,60px)] w-[700px]" data-node-id="167:1619" style={{ fontVariationSettings: '"GRAD" 0, "ROND" 0, "wdth" 100' }}>

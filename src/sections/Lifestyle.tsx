@@ -95,7 +95,7 @@ export default function Lifestyle() {
       <div className="content-stretch flex items-end justify-between overflow-clip relative shrink-0 w-full" data-node-id="167:1391" data-name="Head">
         <div className="[word-break:break-word] content-stretch flex flex-col gap-[16px] items-start overflow-clip relative shrink-0 whitespace-nowrap" data-node-id="167:1392" data-name="Frame">
           <div className="content-stretch flex font-semibold gap-[12px] items-start leading-[var(--text-5xl--line-height,48px)] relative shrink-0 text-[length:var(--text-5xl,48px)]" data-node-id="167:1393">
-            <p className="font-serif font-semibold italic relative shrink-0 text-[color:var(--color-amber-500,#f4a903)]" data-node-id="167:1394">
+            <p className="font-sans font-semibold relative shrink-0 text-[color:var(--color-amber-500,#f4a903)]" data-node-id="167:1394">
               Explore London
             </p>
             <p className="font-sans  relative shrink-0 text-[color:var(--color-amber-950,#45200a)]" data-node-id="167:1395" style={{ fontVariationSettings: '"GRAD" 0, "ROND" 0, "wdth" 100' }}>

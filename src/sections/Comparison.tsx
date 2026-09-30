@@ -104,7 +104,7 @@ export default function Comparison() {
   return (
     <div className="bg-[#fafafa] content-stretch flex flex-col gap-[36px] items-center px-[240px] py-[120px] relative w-[1920px] h-[953px] overflow-clip" data-node-id="167:1538" data-name="Comparison">
       <div className="[word-break:break-word] content-stretch flex flex-col gap-[16px] items-center overflow-clip relative shrink-0" data-node-id="167:1539" data-name="Head">
-        <p className="font-serif font-semibold font-semibold italic leading-[var(--text-5xl--line-height,48px)] relative shrink-0 text-[color:var(--color-amber-500,#f4a903)] text-[length:var(--text-5xl,48px)] whitespace-nowrap" data-node-id="167:1540">
+        <p className="font-sans font-semibold font-semibold leading-[var(--text-5xl--line-height,48px)] relative shrink-0 text-[color:var(--color-amber-500,#f4a903)] text-[length:var(--text-5xl,48px)] whitespace-nowrap" data-node-id="167:1540">
           Portals list homes.
         </p>
         <p className="font-sans  font-bold leading-[var(--text-5xl--line-height,48px)] relative shrink-0 text-[color:var(--color-amber-950,#45200a)] text-[length:var(--text-5xl,48px)] whitespace-nowrap" data-node-id="167:1541" style={{ fontVariationSettings: '"GRAD" 0, "ROND" 0, "wdth" 100' }}>

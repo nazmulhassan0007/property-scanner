@@ -3,7 +3,6 @@
 /* Tokens from the Figma "Colors" + "Typography" collections */
 @theme {
   --font-sans: "Google Sans Flex", system-ui, sans-serif;
-  --font-serif: "Playfair Display", Georgia, serif;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
@@ -65,8 +64,8 @@ body {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(20, 20, 20, 0.78) 0%, rgba(20, 20, 20, 0.35) 22%, rgba(20, 20, 20, 0.45) 50%, rgba(20, 20, 20, 0.82) 85%, #141414 100%),
-    radial-gradient(60% 45% at 50% 58%, rgba(20, 20, 20, 0.35), rgba(20, 20, 20, 0) 70%);
+    linear-gradient(180deg, rgba(20, 20, 20, 0.78) 0%, rgba(20, 20, 20, 0.45) 22%, rgba(20, 20, 20, 0.55) 50%, rgba(20, 20, 20, 0.85) 85%, #141414 100%),
+    radial-gradient(60% 45% at 50% 60%, rgba(20, 20, 20, 0.45), rgba(20, 20, 20, 0) 70%);
 }
 @keyframes video-in { from { opacity: 0; transform: scale(1.06); } to { opacity: 1; transform: scale(1); } }
 
@@ -282,6 +281,11 @@ body {
   box-shadow: 0 0 0 1px rgba(255, 215, 148, 0.9), 0 18px 40px rgba(244, 169, 3, 0.22);
   border-color: #ffd794 !important;
 }
+
+/* Figma sets 278px text inside 276px frames here; let the 2px show instead of clipping it */
+[data-node-id="167:1443"] > div,
+[data-node-id="167:1454"] > div,
+[data-node-id="167:1473"] > div { overflow: visible !important; }
 
 /* Step 04 hover glow (Figma set "Journey step card / Highlight", 350ms) */
 [data-node-id="200:1928"] {

@@ -79,7 +79,7 @@ export default function Journey() {
       <div className="[word-break:break-word] content-stretch flex flex-col gap-[16px] items-start overflow-clip relative shrink-0" data-node-id="167:1434" data-name="Head">
         <div className="content-stretch flex flex-col font-semibold gap-[16px] items-start leading-[var(--text-5xl--line-height,48px)] relative shrink-0 text-[length:var(--text-5xl,48px)] whitespace-nowrap" data-node-id="167:1435">
           <div className="content-stretch flex gap-[16px] items-center relative shrink-0" data-node-id="167:1436">
-            <p className="font-serif font-semibold italic relative shrink-0 text-[color:var(--color-amber-500,#f4a903)]" data-node-id="167:1437">{`You don't need `}</p>
+            <p className="font-sans font-semibold relative shrink-0 text-[color:var(--color-amber-500,#f4a903)]" data-node-id="167:1437">{`You don't need `}</p>
             <p className="font-sans  relative shrink-0 text-[color:var(--color-amber-950,#45200a)]" data-node-id="167:1438" style={{ fontVariationSettings: '"GRAD" 0, "ROND" 0, "wdth" 100' }}>
               to search for
             </p>
@@ -234,18 +234,18 @@ export default function Journey() {
                     </div>
                   </div>
                 </div>
-                <p className="[word-break:break-word] font-sans font-semibold font-semibold leading-[normal] not-italic relative shrink-0 text-[#141414] text-[14px] whitespace-nowrap" data-node-id="167:1507" style={{ fontVariationSettings: '"GRAD" 0, "ROND" 0, "wdth" 100' }}>
+                <p className="[word-break:break-word] font-sans font-semibold font-semibold leading-[normal] not-relative shrink-0 text-[#141414] text-[14px] whitespace-nowrap" data-node-id="167:1507" style={{ fontVariationSettings: '"GRAD" 0, "ROND" 0, "wdth" 100' }}>
                   Founding members
                 </p>
               </div>
-              <p className="[word-break:break-word] font-sans font-bold font-bold leading-[0] min-w-full not-italic relative shrink-0 text-[#141414] text-[34px] w-[min-content]" data-node-id="167:1508" style={{ fontVariationSettings: '"GRAD" 0, "ROND" 0, "wdth" 100' }}>
-                <span className="font-serif font-medium font-medium italic leading-[normal] text-[#f4a903]">Be one of the first</span>
+              <p className="[word-break:break-word] font-sans font-bold font-bold leading-[0] min-w-full not-relative shrink-0 text-[#141414] text-[34px] w-[min-content]" data-node-id="167:1508" style={{ fontVariationSettings: '"GRAD" 0, "ROND" 0, "wdth" 100' }}>
+                <span className="font-sans font-medium font-medium leading-[normal] text-[#f4a903]">Be one of the first</span>
                 <span className="leading-[normal]">{` `}</span>
                 <span className="leading-[normal] text-[#45200a]" style={{ fontVariationSettings: '"GRAD" 0, "ROND" 0, "wdth" 100' }}>
                   100 in London
                 </span>
               </p>
-              <p className="[word-break:break-word] font-sans font-normal font-normal leading-[1.55] min-w-full not-italic relative shrink-0 text-[#141414] text-[17px] w-[min-content]" data-node-id="167:1509" style={{ fontVariationSettings: '"GRAD" 0, "ROND" 0, "wdth" 100' }}>
+              <p className="[word-break:break-word] font-sans font-normal font-normal leading-[1.55] min-w-full not-relative shrink-0 text-[#141414] text-[17px] w-[min-content]" data-node-id="167:1509" style={{ fontVariationSettings: '"GRAD" 0, "ROND" 0, "wdth" 100' }}>
                 Early access before we open this up more widely — and you see new matches before anyone else does.
               </p>
             </div>
@@ -253,7 +253,7 @@ export default function Journey() {
           <div className="relative shrink-0" data-node-id="167:1510">
             <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[24px] items-start justify-center relative size-full">
               <div className="content-stretch flex flex-col gap-[12px] h-[53px] items-start overflow-clip relative shrink-0 w-[360px]" data-node-id="167:1511" data-name="Places meter">
-                <div className="[word-break:break-word] content-stretch flex items-start justify-between leading-[normal] not-italic overflow-clip relative shrink-0 text-[#0d0d0d] text-[14px] w-full whitespace-nowrap" data-node-id="167:1512" data-name="Count">
+                <div className="[word-break:break-word] content-stretch flex items-start justify-between leading-[normal] not-overflow-clip relative shrink-0 text-[#0d0d0d] text-[14px] w-full whitespace-nowrap" data-node-id="167:1512" data-name="Count">
                   <p className="font-sans font-semibold font-semibold relative shrink-0" data-node-id="167:1513" style={{ fontVariationSettings: '"GRAD" 0, "ROND" 0, "wdth" 100' }}>
                     37 places claimed
                   </p>
@@ -264,7 +264,7 @@ export default function Journey() {
                 <ProgressBarLive className="bg-[var(--color-gray-700,#494949)] h-[10px] relative rounded-[999px] shrink-0 w-[360px]" />
               </div>
               <div className="bg-[#f4a903] content-stretch flex items-center justify-center px-[16px] py-[12px] relative rounded-[10px] shrink-0" data-node-id="167:1517">
-                <p className="[word-break:break-word] font-sans font-semibold font-semibold leading-[28px] not-italic relative shrink-0 text-[14px] text-[color:var(--color-amber-950,#45200a)] whitespace-nowrap" data-node-id="167:1518" style={{ fontVariationSettings: '"GRAD" 0, "ROND" 0, "wdth" 100' }}>
+                <p className="[word-break:break-word] font-sans font-semibold font-semibold leading-[28px] not-relative shrink-0 text-[14px] text-[color:var(--color-amber-950,#45200a)] whitespace-nowrap" data-node-id="167:1518" style={{ fontVariationSettings: '"GRAD" 0, "ROND" 0, "wdth" 100' }}>
                   Join the First 100
                 </p>
               </div>
